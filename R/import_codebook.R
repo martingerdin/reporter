@@ -16,7 +16,7 @@
 #' @export
 import_codebook <- function(path) {
     ## Check arguments
-    assert_that(is.character(path) & length(path) == 1)
+    assert_that(is.character(path), length(path) == 1)
     assert_that(file.exists(path))
     ## Import codebook
     codebook <- rio::import(path)
@@ -26,6 +26,11 @@ import_codebook <- function(path) {
                    "not appear to be a valid codebook. Please specify ",
                    "a different file.")
     codebook <- split(codebook, as.factor(codebook$name))
+    class(codebook) <- c("reporter:codebook", class(codebook))
     return (codebook)
 }
     
+is_codebook <- function(x) {
+    cond <- "reporter:codebook" %in% class(x)
+    return (cond)
+}
