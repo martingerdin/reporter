@@ -3,7 +3,7 @@
 #' Imports a codebook and makes sure that it conforms to the expected
 #' format.
 #' @param path Character vector of length 1. The path to the
-#'     codebook. Defaults to "./codebook.csv", i.e. it looks for a
+#'     codebook. Defaults to `"./codebook.csv"`, i.e. it looks for a
 #'     file called `codebook.csv` in the current working directory.
 #' @return A list of codebook components indexed according to `name`.
 #' @examples
