@@ -20,6 +20,7 @@ Imports:
     assertthat (>= 0.2.1),
     jsonlite (>= 1.6.1),
     rio (>= 0.5.16),
-    stringr (>= 1.4.0)
+    stringr (>= 1.4.0),
+    dplyr (>= 1.0.0.9000)
 Suggests: 
     testthat
