@@ -20,7 +20,7 @@ is_dataset <- function(x) {
     return (cond)
 }
 
-on_failure(is_dataset) <- function(x) {
+on_failure(is_dataset) <- function(call, env) {
     paste0(deparse(call$x), "is not a valid codebook")
 }
 
