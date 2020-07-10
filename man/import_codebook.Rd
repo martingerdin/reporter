@@ -8,7 +8,7 @@ import_codebook(path)
 }
 \arguments{
 \item{path}{Character vector of length 1. The path to the
-codebook. Defaults to "./codebook.csv", i.e. it looks for a
+codebook. Defaults to \code{"./codebook.csv"}, i.e. it looks for a
 file called \code{codebook.csv} in the current working directory.}
 }
 \value{
