@@ -24,5 +24,35 @@ create_report <- function(codebook, dataset, write = FALSE) {
     assert_codebook()
     assert_dataset()
     assert_that(is.logical(write), length(write) == 1)
+
+    ## Import
+    if (is.character(codebook))
+        codebook <- import_codebook(codebook)
+    if (is.character(dataset))
+        dataset <- import_dataset(dataset)
+
+    ## Create front matter
+    front.matter <- create_front_matter()
     
+    ## Create table of contents
+    table.of.contents <- create_table_of_contents()
+    
+    ## Create content
+    content <- create_content()
+    
+    ## Combine report components
+    report <- combine_report_components()
+    
+    ## Write report to disk
+    if (write)
+        write_report(report)
+
+    ## Return report
+    return (report)
 }
+
+create_front_matter <- function() NULL
+create_table_of_content <- function() NULL
+create_content <- function() NULL
+combine_report_components <- function() NULL
+write_report <- function(report) NULL
