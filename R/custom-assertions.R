@@ -15,6 +15,15 @@ on_failure(is_codebook) <- function(call, env) {
     paste0(deparse(call$x), " is not a valid codebook")
 }
 
+is_dataset <- function(x) {
+    cond <- "reporter_dataset" %in% class(x)
+    return (cond)
+}
+
+on_failure(is_dataset) <- function(x) {
+    paste0(deparse(call$x), "is not a valid codebook")
+}
+
 assert_path <- function(path = NULL, env = parent.frame()) {
     path <- get_from_env(path, env)
     assert_that(is.character(path), length(path) == 1, file.exists(path))

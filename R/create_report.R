@@ -22,5 +22,7 @@
 create_report <- function(codebook, dataset, write = FALSE) {
     ## Check arguments
     assert_codebook()
-##    assert_dataset()
+    assert_dataset()
+    assert_that(is.logical(write), length(write) == 1)
+    
 }
