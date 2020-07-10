@@ -26,11 +26,9 @@ import_codebook <- function(path) {
                    "not appear to be a valid codebook. Please specify ",
                    "a different file.")
     codebook <- split(codebook, as.factor(codebook$name))
-    class(codebook) <- c("reporter:codebook", class(codebook))
+    class(codebook) <- c("reporter_codebook", class(codebook))
     return (codebook)
-}
-    
-is_codebook <- function(x) {
-    cond <- "reporter:codebook" %in% class(x)
-    return (cond)
-}
+}  
+
+
+
