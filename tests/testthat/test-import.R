@@ -9,3 +9,7 @@ test_that("import_dataset returns tibble", {
     path <- system.file("extdata", "dataset.csv", package = "reporter")
     expect_s3_class(import_dataset(path), "tbl_df")
 })
+test_that("import_dataset returns reporter_dataset", {
+    path <- system.file("extdata", "dataset.csv", package = "reporter")
+    expect_s3_class(import_dataset(path), "reporter_dataset")
+})

@@ -13,5 +13,6 @@
 import_dataset <- function(path) {
     assert_path()
     dataset <- rio::import(path) %>% dplyr::as_tibble()
+    class(dataset) <- c("reporter_dataset", class(dataset))
     return (dataset)
 }
