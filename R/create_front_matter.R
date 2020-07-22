@@ -32,5 +32,41 @@
 #' @export
 create_front_matter <- function(title = "Report", subtitle = NULL, author = NULL,
                                 date = NULL, logo = NULL, image = NULL, write = FALSE) {
-    NULL
+    ## Check arguments
+    assert_that(is.null(title) | (is.character(title) & length(title) == 1))
+    assert_that(is.null(subtitle) | (is.character(subtitle) & length(subtitle) == 1))
+    assert_that(is.null(author) | (is.character(author) & length(author) == 1))
+    assert_that(is.null(date) | (is.character(date) & length(date) == 1))
+    assert_that(is.null(logo) | (is.character(logo) & length(logo) == 1))
+    assert_that(is.null(image) | (is.character(image) & length(image) == 1))
+    assert_that(is.logical(write), length(write) == 1)
+
+    ## Setup arguments
+    if (is.null(logo))
+        logo <- wrap_file("templates", "logo.svg")
+    variables <- list(title = title,
+                      subtitle = subtitle,
+                      author = author,
+                      date = date,
+                      logo = ,
+                      image = image)
+    variables <- lapply(variables, function(x) if (is.null(x)) "" else x)
+    
+    ## Load template
+    template <- front.matter <- get_template("front-matter")
+
+    ## Replace variables
+    for (variable.name in names(variables)) {
+        pattern <- paste0("{{", variable.name, "}}")
+        replacement <- variables[[variable.name]]
+        x <- front.matter
+        front.matter <- gsub(pattern, replacement, x, fixed = TRUE)
+    }
+
+    ## Write front matter to disk
+    if (write)
+        write_to_disk(front.matter)
+
+    ## Return front matter
+    front.matter
 }

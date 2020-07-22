@@ -51,7 +51,6 @@ create_report <- function(codebook, dataset, write = FALSE) {
     return (report)
 }
 
-create_front_matter <- function() NULL
 create_table_of_content <- function() NULL
 create_content <- function() NULL
 combine_report_components <- function() NULL
