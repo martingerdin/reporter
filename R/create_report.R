@@ -38,7 +38,7 @@ create_report <- function(codebook, dataset, write = FALSE) {
     table.of.contents <- create_table_of_contents()
     
     ## Create content
-    content <- create_content()
+    content <- create_content(codebook, dataset)
     
     ## Combine report components
     report <- combine_report_components()
