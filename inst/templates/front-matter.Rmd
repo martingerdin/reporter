@@ -1,0 +1,12 @@
+---
+title: |
+  ![]({{logo}}){height=25mm}  
+  {{title}}
+subtitle: {{subtitle}}
+author: {{author}}
+date: {{date}}
+output: pdf_document
+---
+
+\pagebreak
+
