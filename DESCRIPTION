@@ -21,7 +21,7 @@ Imports:
     jsonlite (>= 1.6.1),
     rio (>= 0.5.16),
     stringr (>= 1.4.0),
-    dplyr (>= 1.0.0.9000),
+    dplyr (>= 1.0.0),
     lubridate (>= 1.7.9)
 Suggests: 
     testthat
