@@ -13,3 +13,11 @@ stop_wrap <- function(...) {
     stop (stringr::str_wrap(paste0(...)))
 }
 
+wrap_file <- function(...) {
+    system.file(..., package = "reporter", mustWork = TRUE)
+}
+
+get_template <- function(name) {
+    readLines(wrap_file("templates", paste0(name, ".Rmd")))
+}
+
