@@ -4,7 +4,7 @@ test_params <- function() {
     params <- list(
         codebook = rio::import(system.file("extdata", "codebook.csv", package = "reporter")),
         faulty.codebook = rio::import(system.file("extdata", "faulty-codebook.csv", package = "reporter")),
-        dataset = rio::import(system.file("extdata", "codebook.csv", package = "reporter"))
+        dataset = rio::import(system.file("extdata", "dataset.csv", package = "reporter"))
     )
     return (params)
 }
