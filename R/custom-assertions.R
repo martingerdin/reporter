@@ -39,4 +39,8 @@ assert_dataset <- function(x = NULL, call = parent.frame()) {
     assert_that(is_dataset(x) || (is.character(x) & length(x) == 1))
 }
 
-
+assert_strata <- function(x = NULL, call = parent.frame()) {
+    strata <- get_from_env(strata, env)
+    assert_that(is.null(strata) || is.character(strata) & length(strata) == 1,
+                msg = "strata has to be either NULL or a character vector of length 1")
+}
