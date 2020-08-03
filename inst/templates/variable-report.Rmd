@@ -1,11 +1,11 @@
-# {{label}} ({{name}})
-
-{{description}}
+# `r label` (`r name`)
+`r description`
 
 ## Data overview
-
-{{data.overview}}
+```{r, echo = FALSE}
+variable.plot
+variable.table
+```
 
 \pagebreak
-
 

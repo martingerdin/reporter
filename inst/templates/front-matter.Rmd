@@ -1,11 +1,11 @@
 ---
 title: |
-  ![]({{logo}}){height=25mm}  
-  {{title}}
-subtitle: {{subtitle}}
-author: {{author}}
-date: {{date}}
-output: pdf_document
+  ![](`r logo`){height=25mm}  
+  "`r title`"
+subtitle: "`r subtitle`"
+author: "`r author`"
+date: "`r date`"
+output: md_document
 ---
 
 \pagebreak
