@@ -48,25 +48,12 @@ create_front_matter <- function(title = "Report", subtitle = NULL, author = NULL
                       subtitle = subtitle,
                       author = author,
                       date = date,
-                      logo = ,
+                      logo = logo,
                       image = image)
     variables <- lapply(variables, function(x) if (is.null(x)) "" else x)
-    
-    ## Load template
-    template <- front.matter <- get_template("front-matter")
 
-    ## Replace variables
-    for (variable.name in names(variables)) {
-        pattern <- paste0("{{", variable.name, "}}")
-        replacement <- variables[[variable.name]]
-        x <- front.matter
-        front.matter <- gsub(pattern, replacement, x, fixed = TRUE)
-    }
-
-    ## Write front matter to disk
-    if (write)
-        write_to_disk(front.matter)
-
+    ## Substitute variables in template
+    front.matter <- substitute_variables("front-matter", variables)
     ## Return front matter
     front.matter
 }
