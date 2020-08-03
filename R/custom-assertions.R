@@ -30,17 +30,23 @@ assert_path <- function(path = NULL, env = parent.frame()) {
 }
 
 assert_codebook <- function(codebook = NULL, env = parent.frame()) {
-    codebook <- get_from_env(codebook, env)
-    assert_that(is_codebook(codebook) || (is.character(codebook) & length(codebook) == 1))
+    x <- get_from_env(codebook, env)
+    assert_that(is_codebook(x) || (is.character(x) & length(x) == 1))
 }
 
 assert_dataset <- function(x = NULL, call = parent.frame()) {
-    dataset <- get_from_env(dataset, env)
+    x <- get_from_env(dataset, env)
     assert_that(is_dataset(x) || (is.character(x) & length(x) == 1))
 }
 
 assert_strata <- function(x = NULL, call = parent.frame()) {
-    strata <- get_from_env(strata, env)
-    assert_that(is.null(strata) || is.character(strata) & length(strata) == 1,
+    x <- get_from_env(strata, env)
+    assert_that(is.null(x) || is.character(x) & length(x) == 1,
                 msg = "strata has to be either NULL or a character vector of length 1")
+}
+
+assert_codebook_data <- function(x = NULL, call = parent.frame()) {
+    x <- get_from_env(codebook.data, env)
+    assert_that(is.list(x))
+    assert_that(all(c("name", "label", "description", "type", "data") %in% names(x)))
 }
