@@ -22,6 +22,7 @@ Imports:
     rio (>= 0.5.16),
     stringr (>= 1.4.0),
     dplyr (>= 1.0.0),
-    lubridate (>= 1.7.9)
+    lubridate (>= 1.7.9),
+    ggplot2 (>= 3.3.2)
 Suggests: 
     testthat
