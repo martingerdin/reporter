@@ -1,10 +1,18 @@
 up <- function(x) usethis::use_package(x, min_version = packageVersion(x))
 
 test_params <- function() {
+    codebook.path <- wrap_file("extdata", "codebook.csv")
+    dataset.path <- wrap_file("extdata", "dataset.csv")
+    codebook <- import_codebook(codebook.path)
+    dataset <- import_dataset(dataset.path)
+    codebook.data <- create_codebook_data(codebook, dataset, "centre")
+    entry <- codebook.data$age
     params <- list(
-        codebook = rio::import(system.file("extdata", "codebook.csv", package = "reporter")),
-        faulty.codebook = rio::import(system.file("extdata", "faulty-codebook.csv", package = "reporter")),
-        dataset = rio::import(system.file("extdata", "dataset.csv", package = "reporter"))
+        codebook = codebook,
+        faulty.codebook = rio::import(wrap_file("extdata", "faulty-codebook.csv")),
+        dataset = dataset,
+        codebook.data = codebook.data,
+        entry = entry
     )
     return (params)
 }
