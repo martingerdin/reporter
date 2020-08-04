@@ -10,6 +10,10 @@ create_content()
 \item{codebook}{List of class \code{reporter:codebook}. No default.}
 
 \item{dataset}{Dataframe of class \code{reporter:dataset}. No default.}
+
+\item{strata}{Character or NULL. The name of the variable to use
+for stratification. The report will not be stratified if
+\code{strata} is NULL. Defaults to NULL.}
 }
 \description{
 Creates report content

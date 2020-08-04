@@ -4,7 +4,7 @@
 \alias{create_report}
 \title{Create a report}
 \usage{
-create_report(codebook, dataset, write = FALSE)
+create_report(codebook, dataset, strata = NULL, write = FALSE)
 }
 \arguments{
 \item{codebook}{List of class \code{reporter:codebook} or character. A
@@ -15,6 +15,10 @@ path and is passed to \code{import_codebook()}. No default.}
 character. A character vector of length 1 is assumed to be the
 dataset file path and is passed to \code{import_dataset()}. No
 default.}
+
+\item{strata}{Character or NULL. The name of the variable to use
+for stratification. The report will not be stratified if
+\code{strata} is NULL. Defaults to NULL.}
 
 \item{write}{Logical. If TRUE the report is written to disk using
 \code{write_report()}. If FALSE the report is only
