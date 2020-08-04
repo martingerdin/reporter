@@ -1,8 +1,12 @@
+```{r global_options, include=FALSE}
+knitr::opts_chunk$set(fig.width=12, fig.height=8, echo=FALSE, warning=FALSE, message=FALSE)
+```
+
 # `r label` (`r name`)
 `r description`
 
 ## Data overview
-```{r, echo = FALSE}
+```{r data-overview}
 variable.plot
 variable.table
 ```

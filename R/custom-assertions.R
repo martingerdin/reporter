@@ -45,8 +45,8 @@ assert_strata <- function(x = NULL, call = parent.frame()) {
                 msg = "strata has to be either NULL or a character vector of length 1")
 }
 
-assert_codebook_data <- function(x = NULL, call = parent.frame()) {
-    x <- get_from_env(codebook.data, env)
+assert_entry <- function(x = NULL, call = parent.frame()) {
+    x <- get_from_env(entry, env)
     assert_that(is.list(x))
     assert_that(all(c("name", "label", "description", "type", "data") %in% names(x)))
 }

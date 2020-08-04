@@ -10,6 +10,9 @@
 #'     character. A character vector of length 1 is assumed to be the
 #'     dataset file path and is passed to `import_dataset()`. No
 #'     default.
+#' @param strata Character or NULL. The name of the variable to use
+#'     for stratification. The report will not be stratified if
+#'     `strata` is NULL. Defaults to NULL. 
 #' @param write Logical. If TRUE the report is written to disk using
 #'     `write_report()`. If FALSE the report is only
 #'     returned. Defaults to FALSE.
@@ -19,12 +22,12 @@
 #' @examples
 #' create_report()
 #' @export
-create_report <- function(codebook, dataset, write = FALSE) {
+create_report <- function(codebook, dataset, strata = NULL, write = FALSE) {
     ## Check arguments
     assert_codebook()
     assert_dataset()
     assert_that(is.logical(write), length(write) == 1)
-
+    assert_strata()
     ## Import
     if (is.character(codebook))
         codebook <- import_codebook(codebook)
@@ -38,7 +41,7 @@ create_report <- function(codebook, dataset, write = FALSE) {
     table.of.contents <- create_table_of_contents()
     
     ## Create content
-    content <- create_content(codebook, dataset)
+    content <- create_content(codebook = codebook, dataset = dataset, strata = strata)
     
     ## Combine report components
     report <- combine_report_components()
