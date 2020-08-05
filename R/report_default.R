@@ -13,13 +13,14 @@ report_default <- function(entry) {
     variable <- entry$name
     variable <- ensym(variable)
     summary.data <- entry$data
-    stratify <- !is.null(entry$strata)
+    stratify <- !is.null(entry$strata) && entry$strata$codebook$name != entry$name
     if (stratify) {
         summary.data <- cbind(summary.data, entry$strata$data) 
         strata <- entry$strata$codebook$name
+        summary.data[, strata] <- as.character(summary.data[, strata])
         overall.data <- summary.data
-        overall.data[[strata]] <- "All"
-        summary.data <- rbind(summary.data, overall.data) %>% dplyr::as_tibble()
+        overall.data[, strata] <- "All"
+        summary.data <- dplyr::bind_rows(summary.data, overall.data) %>% dplyr::as_tibble()
     }
     variable.plot <- ggplot(data = summary.data, aes(!!variable)) + geom_histogram()
     if (stratify)
@@ -30,15 +31,8 @@ report_default <- function(entry) {
         strata <- ensym(strata)
         summary.data <- dplyr::group_by(summary.data, !!strata)
     }
-    variable.table <- summary.data %>%
-        dplyr::summarise(N = dplyr::n(),
-                         Mean = mean(!!variable, na.rm = TRUE),
-                         Median = median(!!variable, na.rm = TRUE),
-                         Min. = min(!!variable, na.rm = TRUE),
-                         Max. = max(!!variable, na.rm = TRUE),
-                         "Missing (N)" = sum(is.na(!!variable)),
-                         "Missng (%)" = round(mean(is.na(!!variable)) * 100)) %>%
-        knitr::kable()
+    variable.table <- tryCatch(create_summary_table(summary.data, variable),
+                               error = function(e) e$message)
     ## Create variables
     variables <- list(label = entry$label,
                       name = entry$name,
