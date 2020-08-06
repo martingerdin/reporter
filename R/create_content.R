@@ -24,12 +24,12 @@ create_content <- function(codebook, dataset, strata = NULL) {
 } 
 
 create_codebook_data <- function(codebook, dataset, strata) {
-    codebook.data <- lapply(codebook.list, function(x) {
+    codebook.data <- lapply(codebook, function(x) {
         x <- as.list(x)
         name <- x$name
         x$data <- dataset %>% dplyr::select({{ name }})
         if (!is.null(strata))
-            x$strata <- list(codebook = codebook.list[[strata]],
+            x$strata <- list(codebook = codebook[[strata]],
                              data = dataset %>% dplyr::select({{ strata }}))
         x
     })
