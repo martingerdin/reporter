@@ -1,6 +1,6 @@
 get_from_env <- function(x, env) {
     if (is.null(x)) {
-        x <- env$path
+        x <- env[[deparse(substitute(x))]]
         assert_that(!is.null(x))
     }
     return (x)
