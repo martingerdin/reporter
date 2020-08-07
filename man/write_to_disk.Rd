@@ -21,7 +21,7 @@ debugging. Defaults to FALSE.}
 Returns \code{object} invisibly.
 }
 \description{
-Write an object to disk and render with \code{package:rmarkdown}.
+Write an object to disk and render with \code{rmarkdown::render}.
 }
 \examples{
 front.matter <- create_front_matter()

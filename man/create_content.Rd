@@ -4,7 +4,7 @@
 \alias{create_content}
 \title{Create content}
 \usage{
-create_content()
+create_content(codebook, dataset, strata = NULL)
 }
 \arguments{
 \item{codebook}{List of class \code{reporter:codebook}. No default.}
