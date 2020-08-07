@@ -32,7 +32,10 @@ report_default <- function(entry) {
         summary.data <- dplyr::group_by(summary.data, !!strata)
     }
     variable.table <- tryCatch(create_summary_table(summary.data, variable),
-                               error = function(e) e$message)
+                               error = function(e) {
+                                   write(e$message, "log.txt", append = TRUE)
+                                   "There was an error trying to compile this table, see log.txt"
+                               })
     ## Create variables
     variables <- list(label = entry$label,
                       name = entry$name,
