@@ -1,4 +1,4 @@
-#' Report
+#' Report a variable
 #'
 #' Identifies the appropriate report function depending on variable
 #' type
@@ -6,7 +6,7 @@
 #'     the variable and if applicable the strata data. No default.
 #' @return A character vector formatted as markdown.
 #' @export
-report <- function(entry) {
+report_variable <- function(entry) {
     assert_entry()
     type <- entry$type
     unknown <- entry$unknown

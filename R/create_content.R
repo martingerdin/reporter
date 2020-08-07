@@ -16,9 +16,9 @@ create_content <- function(codebook, dataset, strata = NULL) {
     assert_strata()
     ## Add data and strata to codebook elements to avoid having to
     ## pass the entire codebook and dataset to subfunctions
-    codebook.data <- creata_codebook_data(codebook, dataset, strata)
+    codebook.data <- create_codebook_data(codebook, dataset, strata)
     ## Create content
-    content <- lapply(codebook.data, report)
+    content <- lapply(codebook.data, report_variable)
     ## Return content
     return (content)
 } 
