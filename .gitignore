@@ -1,3 +1,4 @@
 PROJECT.org
 **/*~
 **/figure*
+/log.txt
