@@ -38,23 +38,29 @@ create_report <- function(codebook, dataset, strata = NULL, write = FALSE) {
     front.matter <- create_front_matter()
     
     ## Create table of contents
-    table.of.contents <- create_table_of_contents()
+    # table.of.contents <- create_table_of_contents()
     
     ## Create content
     content <- create_content(codebook = codebook, dataset = dataset, strata = strata)
     
     ## Combine report components
-    report <- combine_report_components()
-    
+    report <- combine_report_components(front.matter, content)
+        
     ## Write report to disk
     if (write)
-        write_report(report)
+        write_to_disk(report, "report.pdf", keep.temp = TRUE)
 
     ## Return report
     return (report)
 }
 
 create_table_of_content <- function() NULL
-create_content <- function() NULL
-combine_report_components <- function() NULL
+combine_report_components <- function(...) {
+    components <- lapply(list(...), unlist)
+    ## Check that all components are character vectors
+    assert_that(all(sapply(components, is.character)))
+    ## Combine components
+    report <- paste0(unlist(components), collapse = "\n")
+    report
+}
 write_report <- function(report) NULL
