@@ -21,7 +21,7 @@ write_to_disk <- function(object, file.name = NULL, keep.temp = FALSE) {
         file.name <- paste0(deparse(substitute(object)), ".pdf")
     tmp.file <- tempfile(tmpdir = ".", fileext = ".md") 
     writeLines(object, tmp.file)
-    tryCatch(rmarkdown::render(tmp.file, output_file = file.name),
+    tryCatch(rmarkdown::render(tmp.file, output_file = file.name, output_format = "pdf_document"),
              error = function(e) stop(e$message),
              finally = if (!keep.temp) file.remove(tmp.file))
     invisible(object)
