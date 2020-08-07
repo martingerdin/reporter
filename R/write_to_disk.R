@@ -1,6 +1,6 @@
 #' Write to disk
 #'
-#' Write an object to disk and render with `package:rmarkdown`.
+#' Write an object to disk and render with `rmarkdown::render`.
 #' @param object Character. No default.
 #' @param file.name Character or NULL. The name of the rendered
 #'     file. If NULL the name will be created based on the object
