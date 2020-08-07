@@ -7,12 +7,14 @@ test_params <- function() {
     dataset <- import_dataset(dataset.path)
     codebook.data <- create_codebook_data(codebook, dataset, "centre")
     entry <- codebook.data$age
+    strata <- "centre"
     params <- list(
         codebook = codebook,
         faulty.codebook = rio::import(wrap_file("extdata", "faulty-codebook.csv")),
         dataset = dataset,
         codebook.data = codebook.data,
-        entry = entry
+        entry = entry,
+        strata = strata
     )
     return (params)
 }
