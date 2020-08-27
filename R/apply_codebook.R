@@ -26,7 +26,7 @@ apply_codebook <- function(codebook, dataset) {
         column <- dataset %>% dplyr::pull({entry$name})
         unknown <- entry$unknown
         if (!is.na(unknown))
-            column <- na_if(column, unknown)
+            column <- dplyr::na_if(column, unknown)
         tryCatch(convert_column(column, entry, dataset),
                  error = function(e) {
                      message_wrap("The column ", entry$name, " could not be ",
