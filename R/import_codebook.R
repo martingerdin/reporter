@@ -6,13 +6,6 @@
 #'     codebook. Defaults to `"./codebook.csv"`, i.e. it looks for a
 #'     file called `codebook.csv` in the current working directory.
 #' @return A list of codebook components indexed according to `name`.
-#' @examples
-#' \dontrun {
-#' ## Assumes a file called codebook.csv in the current working
-#' ## directory
-#' codebook <- import_codebook()
-#' codebook
-#' }
 #' @export
 import_codebook <- function(path) {
     ## Check arguments
