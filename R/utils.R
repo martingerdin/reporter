@@ -19,6 +19,10 @@ test_params <- function() {
     return (params)
 }
 
+message_wrap <- function(...) {
+    message (stringr::str_wrap(paste0(...)))
+}
+
 stop_wrap <- function(...) {
     stop (stringr::str_wrap(paste0(...)))
 }
