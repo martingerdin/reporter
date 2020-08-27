@@ -55,7 +55,7 @@ convert_column <- function(column, entry, dataset) {
             column <- as.numeric(column) %>% factor(levels = levels, labels = labels)
         return (column)
     } else if (type == "date") {
-        column <- lubridate::as_date(column)
+        return (column)
     } else if (type == "time") {
         return (column)
     } else {
