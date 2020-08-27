@@ -18,11 +18,3 @@ A list of codebook components indexed according to \code{name}.
 Imports a codebook and makes sure that it conforms to the expected
 format.
 }
-\examples{
-\dontrun {
-## Assumes a file called codebook.csv in the current working
-## directory
-codebook <- import_codebook()
-codebook
-}
-}
